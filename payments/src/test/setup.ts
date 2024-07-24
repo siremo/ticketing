@@ -3,6 +3,8 @@ import mongoose from 'mongoose';
 import request from 'supertest';
 import { app } from '../app';
 import jwt from 'jsonwebtoken';
+import { config } from 'dotenv';
+config();
 
 declare global {
   var signin: (id?: string) => string[];
@@ -10,12 +12,8 @@ declare global {
 
 jest.mock('../nats-wrapper');
 
-process.env.STRIPE_KEY = 'sk_test_hnfrAm8rOkryFEnV23jjfFlw';
-
 let mongo: any;
 beforeAll(async () => {
-  process.env.JWT_KEY = 'asdfasdf';
-  process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
   mongo = await MongoMemoryServer.create();
   const mongoUri = mongo.getUri();

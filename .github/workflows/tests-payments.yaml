@@ -11,3 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: cd payments && npm install && npm run test:ci
+        env:
+          STRIPE_KEY: ${{ secrets.STRIPE_KEY }}
+          JWT_KEY: ${{ secrets.JWT_KEY }}
+          NODE_TLS_REJECT_UNAUTHORIZED: ${{ secrets.NODE_TLS_REJECT_UNAUTHORIZED }}

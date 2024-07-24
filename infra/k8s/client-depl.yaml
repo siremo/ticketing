@@ -26,6 +26,11 @@ spec:
                 secretKeyRef:
                   name: stripe-secret0
                   key: STRIPE_KEY0
+            - name: BASE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: ticketing-config
+                  key: BASE_URL
 ---
 apiVersion: v1
 kind: Service
