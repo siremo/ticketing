@@ -7,6 +7,44 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
+    - host: www.sadotim.click
+      http:
+        paths:
+          - path: /api/payments/?(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: payments-srv
+                port:
+                  number: 3000
+          - path: /api/users/?(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: auth-srv
+                port:
+                  number: 3000
+          - path: /api/tickets/?(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: tickets-srv
+                port:
+                  number: 3000
+          - path: /api/orders/?(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: orders-srv
+                port:
+                  number: 3000
+          - path: /?(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: client-srv
+                port:
+                  number: 3000
     - host: sadotim.click
       http:
         paths:
@@ -51,7 +89,7 @@ kind: Service
 metadata:
   annotations:
     service.beta.kubernetes.io/do-loadbalancer-enable-proxy-protocol: 'true'
-    service.beta.kubernetes.io/do-loadbalancer-hostname: 'sadotim.click'
+    service.beta.kubernetes.io/do-loadbalancer-hostname: 'www.sadotim.click'
   labels:
     helm.sh/chart: ingress-nginx-4.0.1
     app.kubernetes.io/name: ingress-nginx
