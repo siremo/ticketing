@@ -14,7 +14,14 @@ This application demonstrates the use of microservices architecture to handle a 
 
 The application is deployed using Kubernetes, with each service running in its own container, communicating via NATS for pub/sub messaging.
 
+Payments
+--------------------------
+The payment service is currently in developer mode. You can make payments using one of Stripe's test cards::
+  * **Number**: 4242 4242 4242 4242
+  * **CVC**: Any 3 digits
+  * **Expiry Date**: Any future date
+
 Live Project
 ------------
 > [!NOTE]
-> You can see the live application at [http://www.sadotim.click/](http://www.sadotim.click/). Ticket sales are possible after logging in
+> You can see the live application at [sadotim.click](https://www.sadotim.click/). Ticket sales are possible after logging in
