@@ -3,9 +3,16 @@ kind: Ingress
 metadata:
   name: ingress-service
   annotations:
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
     nginx.ingress.kubernetes.io/use-regex: 'true'
 spec:
   ingressClassName: nginx
+  spec:
+  tls:
+  - hosts:
+    - www.sadotim.click
+    - sadotim.click
+    secretName: echo-tls
   rules:
     - host: www.sadotim.click
       http:
@@ -89,7 +96,8 @@ kind: Service
 metadata:
   annotations:
     service.beta.kubernetes.io/do-loadbalancer-enable-proxy-protocol: 'true'
-    service.beta.kubernetes.io/do-loadbalancer-hostname: 'www.sadotim.click'
+    service.beta.kubernetes.io/do-loadbalancer-hostname: 'workaround.sadotim.click'
+    service.beta.kubernetes.io/do-loadbalancer-size-unit: '2'
   labels:
     helm.sh/chart: ingress-nginx-4.0.1
     app.kubernetes.io/name: ingress-nginx
