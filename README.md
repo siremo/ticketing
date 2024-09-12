@@ -20,8 +20,3 @@ The payment service is currently in developer mode. You can make payments using 
   * **Number**: 4242 4242 4242 4242
   * **CVC**: Any 3 digits
   * **Expiry Date**: Any future date
-
-Live Project
-------------
-> [!NOTE]
-> You can see the live application at [sadotim.click](https://www.sadotim.click/). Ticket sales are possible after logging in
